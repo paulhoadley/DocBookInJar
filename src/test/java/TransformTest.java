@@ -54,8 +54,7 @@ public class TransformTest {
 	private Document transformDocument(Document document) throws TransformerException, FileNotFoundException {
 		DOMResult result = new DOMResult();
 		TransformerFactory factory = TransformerFactory.newInstance();
-		InputStream is = TransformTest.class.getResourceAsStream("/xsl/driver.xsl");
-		Source source = new StreamSource(is, "file:/xsl/driver.xsl");
+		Source source = new StreamSource("cp:/xsl/driver.xsl");
 		Transformer transformer = factory.newTransformer(source);
 		transformer.transform(new DOMSource(document), result);
 		return (Document) result.getNode();
