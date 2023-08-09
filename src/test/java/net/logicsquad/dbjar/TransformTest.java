@@ -20,7 +20,15 @@ import javax.xml.transform.stream.StreamSource;
 import org.junit.jupiter.api.Test;
 import org.w3c.dom.Document;
 
+/**
+ * Unit test to demonstrate the proof of concept.
+ * 
+ * @author paulh
+ */
 public class TransformTest {
+	/**
+	 * Trivial DocBook document
+	 */
 	private static final String DOCUMENT = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
 			+ "<chapter version=\"5.0\" xmlns=\"http://docbook.org/ns/docbook\">\n"
 			+ "<title>My title goes here</title>\n"
@@ -38,6 +46,9 @@ public class TransformTest {
 			+ "</section>\n"
 			+ "</chapter>";
 
+	/**
+	 * Runs a transformation and discards the result.
+	 */
 	@Test
 	public void transformTest() {
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -53,6 +64,12 @@ public class TransformTest {
 		}
 	}
 
+	/**
+	 * Runs XSLT transformation on {@code document} starting at {@code /xsl/driver.xsl} stylesheet.
+	 * 
+	 * @param document a {@link Document}
+	 * @return transformed {@link Document}
+	 */
 	private Document transformDocument(Document document) throws TransformerException, FileNotFoundException {
 		DOMResult result = new DOMResult();
 		TransformerFactory factory = TransformerFactory.newInstance();
