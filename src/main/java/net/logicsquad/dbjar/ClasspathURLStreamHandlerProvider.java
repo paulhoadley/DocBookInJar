@@ -1,4 +1,4 @@
-package com.stackoverflow.q76848364;
+package net.logicsquad.dbjar;
 
 import java.io.IOException;
 import java.net.URL;

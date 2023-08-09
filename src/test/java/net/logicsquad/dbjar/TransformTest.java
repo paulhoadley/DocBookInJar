@@ -1,3 +1,5 @@
+package net.logicsquad.dbjar;
+
 import static org.junit.jupiter.api.Assertions.fail;
 
 import java.io.ByteArrayInputStream;
