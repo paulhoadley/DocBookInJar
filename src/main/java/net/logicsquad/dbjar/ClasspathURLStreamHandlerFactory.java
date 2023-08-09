@@ -4,20 +4,26 @@ import java.io.IOException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLStreamHandler;
-import java.net.spi.URLStreamHandlerProvider;
+import java.net.URLStreamHandlerFactory;
 
 /**
- * URL stream handler for "cp:/" URLs for accessing resources in the classpath. Supports a leading slash in
- * the the path so that the scheme is treated as a hierarchical scheme for resolving relative URL references.
+ * <p>
+ * Factory for providing a {@link URLStreamHandler} for "cp:/" URLs for accessing resources in the classpath.
+ * Supports a leading slash in the the path so that the scheme is treated as a hierarchical scheme for
+ * resolving relative URL references.
+ * </p>
  * 
  * <p>
- * Register this provider by putting the fully qualified name of this class in the configuration file
- * {@code META-INF/services/java.net.spi.URLStreamHandlerProvider}.
+ * Register this provider by calling {@link URL#setURLStreamHandlerFactory(URLStreamHandlerFactory)}:
+ * </p>
+ * 
+ * <pre>
+ * URL.setURLStreamHandlerFactory(new ClasspathURLStreamHandlerFactory());
+ * </pre>
  * 
  * @author jkmatila
  */
-public class ClasspathURLStreamHandlerProvider extends URLStreamHandlerProvider {
-
+public class ClasspathURLStreamHandlerFactory implements URLStreamHandlerFactory {
 	private static final String PROTOCOL = "cp";
 
 	@Override
@@ -34,5 +40,4 @@ public class ClasspathURLStreamHandlerProvider extends URLStreamHandlerProvider 
 		}
 		return null;
 	}
-
 }

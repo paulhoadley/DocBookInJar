@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 import java.io.ByteArrayInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -17,6 +18,7 @@ import javax.xml.transform.dom.DOMResult;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamSource;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.w3c.dom.Document;
 
@@ -45,6 +47,11 @@ public class TransformTest {
 			+ "</para>\n"
 			+ "</section>\n"
 			+ "</chapter>";
+
+	@BeforeAll
+	public static void before() {
+		URL.setURLStreamHandlerFactory(new ClasspathURLStreamHandlerFactory());
+	}
 
 	/**
 	 * Runs a transformation and discards the result.
