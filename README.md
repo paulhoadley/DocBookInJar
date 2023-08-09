@@ -29,7 +29,7 @@ Using Java 8
 ------------
 
 The `java-8` branch contains modifications to allow this demonstration
-to run under Java 8. The principle difference is how the
+to run under Java 8. The principal difference is how the
 `URLStreamHandler` is provided at runtime.
 
 * Java 9: `ClasspathURLStreamHandlerProvider` returns the
