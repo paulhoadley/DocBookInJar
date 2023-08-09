@@ -25,6 +25,19 @@ mvn clean test
 
 That's it. It's just a proof of concept.
 
+Using Java 8
+------------
+
+The `java-8` branch contains modifications to allow this demonstration
+to run under Java 8. The principle difference is how the
+`URLStreamHandler` is provided at runtime.
+
+* Java 9: `ClasspathURLStreamHandlerProvider` returns the
+  `URLStreamHandler`, and is registered via `META-INF/services`.
+* Java 8: `ClasspathURLStreamHandlerFactory` returns the
+  `URLStreamHandler`, and is registered via a call to
+  `URL.setURLStreamHandlerFactory()`.
+
 Background
 ----------
 The motivation for doing this is described in [a post to Stack
